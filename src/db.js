@@ -2,17 +2,17 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
-const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, NODE_ENV = '' } = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, NODE_ENV  } = process.env;
 
 const sequelize =
   NODE_ENV === 'production'
     ? new Sequelize({
-      database: "pokemon_eyqv",
+      database:DB_NAME,
       dialect: 'postgres',
-      host: "dpg-cc3ru8cgqg4fb36li9m0-a.oregon-postgres.render.com",
+      host: DB_HOST,
       port: 5432,
-      username:"pokemon_eyqv_user",
-      password: "Ui5yj0odFJA3NGO873HezOPspxswTlID",
+      username:DB_USER,
+      password: DB_PASSWORD,
         pool: {
           max: 3,
           min: 1,
